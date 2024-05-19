@@ -14,6 +14,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  logger:
-    file-name: myApp
+    properties:
+      hibernate:
+        format-sql: true
 

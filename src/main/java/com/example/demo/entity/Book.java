@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Book {
 
@@ -19,6 +21,7 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id")
     )
+    @JsonManagedReference
     private Set<Publisher> publishers;
 
     public Book(){}

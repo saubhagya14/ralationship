@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Publisher {
     @Id
@@ -11,12 +13,12 @@ public class Publisher {
     private Integer id;
     private String publisherName;
     @ManyToMany(mappedBy = "publishers")
+    @JsonBackReference
     private Set<Book> books;
 
     public Publisher(String publisherName) {
         super();
         this.publisherName = publisherName;
-
     }
 
 

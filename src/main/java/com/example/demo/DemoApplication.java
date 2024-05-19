@@ -39,7 +39,7 @@ public class DemoApplication implements CommandLineRunner {
 		Book bookF = new Book("Book6", new HashSet<>(Arrays.asList(publisherF)));
 
 
-		service.saveAllBooks(Arrays.asList(bookA, bookB, bookC, bookD, bookE, bookF));
+		//service.saveAllBooks(Arrays.asList(bookA, bookB, bookC, bookD, bookE, bookF));
 
 
 
