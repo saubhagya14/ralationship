@@ -25,6 +25,7 @@ public class Book {
     private Set<Publisher> publishers;
 
     public Book(){}
+
     public Book(String bookName, Set<Publisher> publishers) {
         this.bookName = bookName;
         this.publishers = publishers;
@@ -53,4 +54,5 @@ public class Book {
     public void setPublishers(Set<Publisher> publishers) {
         this.publishers = publishers;
     }
+
 }
