@@ -2,14 +2,12 @@ package com.example.demo.controller.MyController;
 
 import com.example.demo.entity.*;
 import com.example.demo.service.BookPublisherService;
+import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +16,12 @@ public class Controller {
 
     @Autowired
     BookPublisherService service;
+    @Autowired
+    StudentService studentService;
+
 
     @GetMapping("/all")
-    public CustomeDTO all(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+    public CustomeDTO all(@RequestParam(defaultValue = "0") int page, @RequestParam("size") Integer size) {
         return service.findAllBook(PageRequest.of(page, size));
     }
 
@@ -40,6 +41,12 @@ public class Controller {
     public ResponseEntity<List<Laptops>> getLaptopList(@RequestParam("name") String name) {
         List<Laptops> laptopsList = service.getLaptops(name);
         return new ResponseEntity<>(laptopsList, HttpStatus.OK);
+    }
+
+    @PostMapping("/save-student")
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+       Student students1 = studentService.addStudent(student);
+       return new ResponseEntity<>(students1, HttpStatus.OK);
     }
 
 }
